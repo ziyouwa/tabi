@@ -6,7 +6,6 @@
 
 {# Set locale for date #}
 {% set date_locale = macros_translate::translate(key="date_locale", default="en_GB", language_strings=language_strings) %}
-{% set short_date_format = macros_translate::translate(key="short_date_format", default="en_GB", language_strings=language_strings) %}
 
 <div class="archive">
     <ul class="list-with-title">
@@ -35,7 +34,8 @@
                 <li class="listing-item">
                     <div class="post-time">
                         <span class="date">
-                            {{ post.date | date(format=short_date_format, locale=date_locale) }}
+			    {{ macros_format_date::format_date(date=post.updated, short=true,
+                                language_strings=language_strings) }}
                         </span>
                     </div>
                     <a href="{{ post.permalink }}" title="{{ post.title }}">{{ post.title }}</a>
