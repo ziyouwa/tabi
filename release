@@ -37,20 +37,18 @@ export GIT_CLIFF_TEMPLATE="\
             {% set_global breaking_header_shown = true -%}
         {%- endif %}
         {%- if commit.breaking %}
-            - {{ commit.message | upper_first }} ({{ commit.id | truncate(length=7, end=\"\") }})\
+            - {{ commit.message | upper_first -}}
         {% endif -%}
     {% endfor %}
     {% for group, group_commits in commits | group_by(attribute=\"group\") %}
         {{ group | striptags | trim | upper_first }}
-        {% for commit in group_commits -%}
-            {%- if not commit.breaking %}
-                - {{ commit.message | upper_first }} ({{ commit.id | truncate(length=7, end=\"\") }})\
-            {%- endif %}
+        {% for commit in group_commits %}
+            - {% if commit.breaking %}[‼️BREAKING‼️] {% endif %}{{ commit.message | upper_first }}
         {%- endfor %}
     {% endfor %}"
 
 # Generate the tag description.
-changelog=$(git cliff --tag "$VERSION_TAG" --unreleased --strip all)
+changelog=$(git cliff --config cliff-tag.toml --tag "$VERSION_TAG" --unreleased --strip all)
 
 # Create a signed and annotated tag.
 git tag -s -a "$VERSION_TAG" -m "Release $VERSION_TAG" -m "$changelog"
@@ -64,3 +62,17 @@ echo
 
 echo "Release $VERSION_TAG is ready. Don't forget to push the changes and the tag:"
 echo "git push && git push --tags"
+echo
+echo "Once that's done, you should see your tag on GitHub:"
+
+remote_url=$(git remote get-url origin)
+
+# Check if the URL is in SSH format (git@).
+if [[ "$remote_url" == git@github.com:* ]]; then
+    https_url="https://github.com/${remote_url#git@github.com:}"
+    https_url="${https_url%.git}"
+else
+    https_url="${remote_url%.git}"
+fi
+
+echo "${https_url}/tags"
