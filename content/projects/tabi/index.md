@@ -1,24 +1,23 @@
 +++
 title = "tabi"
-description = "A fast, lightweight, and modern Zola theme with multi-language support."
-weight = 1
+description = "A feature-rich modern Zola theme with first-class multi-language support."
+weight = 30
 
 [extra]
 local_image = "projects/tabi/tabi.webp"
-canonical_url = "https://osc.garden/projects/tabi/"
 social_media_card = "social_cards/projects_tabi.jpg"
 +++
 
 [**tabi**](https://github.com/welpo/tabi) is a modern, feature-rich theme for [Zola](https://www.getzola.org/), a fast static site generator.
 
-{{ full_width_image(src="projects/tabi/light_dark_tabi.webp", alt="tabi light and dark mode") }}
+{{ full_width_image(src="https://cdn.jsdelivr.net/gh/welpo/tabi@main/light_dark_screenshot.png", alt="tabi light and dark mode") }}
 
-#### [View on GitHub](https://github.com/welpo/tabi) {.centered-text}
+#### [View on GitHub](https://github.com/welpo/tabi) • [Demo & Documentation](https://welpo.github.io/tabi/) {.centered-text}
 
 ## Features
 
 - [Set any language as default](https://welpo.github.io/tabi/blog/faq-languages/#how-do-i-set-a-default-language-for-my-site). Set your base site to Chinese, Spanish, French, Hindi… or any [other supported language](https://welpo.github.io/tabi/blog/faq-languages/#what-languages-does-tabi-support). The theme's interface will be translated accordingly.
-- [Integration with remote repositories](https://welpo.github.io/tabi/mastering-tabi-settings/#git-repository-integration) on GitHub, GitLab, Gitea & Codeberg for commit history and showing the site source.
+- [Integration with remote repositories](https://welpo.github.io/tabi/blog/mastering-tabi-settings/#git-repository-integration) on GitHub, GitLab, Gitea & Codeberg for commit history and showing the site source.
 - Dark and light themes. Defaults to the OS setting, with a switcher in the navigation bar.
 - Thorough documentation. See [Mastering tabi Settings: A Comprehensive Guide](https://welpo.github.io/tabi/blog/mastering-tabi-settings/).
 - Perfect Lighthouse score (Performance, Accessibility, Best Practices and SEO).
@@ -50,11 +49,8 @@ social_media_card = "social_cards/projects_tabi.jpg"
 ## Development Practices
 
 - **[Conventional Commits](https://www.conventionalcommits.org) & [Gitmoji](https://gitmoji.dev/)**: Commit messages follow standardised formats to enhance readability.
-
 - **Issue Tracking**: Each bug or new feature has its dedicated ticket, which is linked to any consequent code commits and related PRs or issues.
-
 - **Comprehensive Commentary**: Tickets are documented with images, videos, and detailed descriptions to facilitate effective communication and problem-solving.
-
 - **Cross-Referencing**: We link all tickets to the relevant code commits, pull requests, or related issues for complete traceability.
 
 ## Project Evolution
